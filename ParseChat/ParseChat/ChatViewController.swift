@@ -9,14 +9,18 @@
 import UIKit
 import Parse
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var messageTableView: UITableView!
+    var message: [PFObject]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        messageTableView.delegate = self
+        messageTableView.dataSource = self
+        message = []
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +37,38 @@ class ChatViewController: UIViewController {
                 print("The message was saved!")
             } else if let error = error {
                 print("Problem saving message: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return message.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
+        cell.messageLabel?.text = message[indexPath.row]["text"] as? String
+        return cell
+    }
+    
+    @objc func onTimer() {
+        onRefresh()
+    }
+    
+    func onRefresh() {
+        let query = PFQuery(className: "Message")
+        query.addDescendingOrder("createdAt")
+        query.findObjectsInBackground { (messages: [PFObject]?, error: Error?) in
+            if error == nil {
+                if let messages = messages {
+                    for message in messages {
+                        print(message["text"])
+                    }
+                    self.message = messages
+                    self.messageTableView.reloadData()
+                }
+            } else {
+                print(error!)
             }
         }
     }
