@@ -98,29 +98,38 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="63" id="3El-hL-aKV" customClass="ChatCell" customModule="ParseChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="63"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="90" id="3El-hL-aKV" customClass="ChatCell" customModule="ParseChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3El-hL-aKV" id="ENB-BG-5v3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi my name is Kingsley" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJm-Kd-dDN">
-                                                    <rect key="frame" x="8" y="8" width="359" height="46.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Kingsley" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0u6-tQ-6v7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="79" height="23"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hi my name is Kingsley" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJm-Kd-dDN">
+                                                    <rect key="frame" x="0.0" y="31" width="176" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="0u6-tQ-6v7" firstAttribute="top" secondItem="ENB-BG-5v3" secondAttribute="top" id="7Xg-QF-FpZ"/>
+                                                <constraint firstItem="kJm-Kd-dDN" firstAttribute="top" secondItem="0u6-tQ-6v7" secondAttribute="bottom" constant="8" id="Exh-mm-w46"/>
                                                 <constraint firstItem="kJm-Kd-dDN" firstAttribute="leading" secondItem="ENB-BG-5v3" secondAttribute="leading" constant="8" id="FkY-1h-vGm"/>
-                                                <constraint firstItem="kJm-Kd-dDN" firstAttribute="top" secondItem="ENB-BG-5v3" secondAttribute="top" constant="8" id="PuS-VF-YOX"/>
+                                                <constraint firstItem="0u6-tQ-6v7" firstAttribute="leading" secondItem="ENB-BG-5v3" secondAttribute="leading" id="Kng-GX-NDw"/>
                                                 <constraint firstAttribute="bottom" secondItem="kJm-Kd-dDN" secondAttribute="bottom" constant="8" id="g6s-go-p2S"/>
                                                 <constraint firstAttribute="trailing" secondItem="kJm-Kd-dDN" secondAttribute="trailing" constant="8" id="vTa-9q-o4S"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageLabel" destination="kJm-Kd-dDN" id="ppZ-c2-8Af"/>
+                                            <outlet property="nameLabel" destination="0u6-tQ-6v7" id="J14-ar-gZC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
